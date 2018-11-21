@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +19,9 @@
         <activity android:name=".OCTranspo">
 
         </activity>
+        <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieMain" />
+        <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieDetails" />
+        <activity android:name="com.example.tylercrozman.tylerfinalportion.SavedMovieDetails" />
     </application>
 
 </manifest>
