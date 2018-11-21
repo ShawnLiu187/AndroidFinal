@@ -36,7 +36,7 @@ class MainActivity : Activity() {
         var busPortal = findViewById<Button>(R.id.busPortal)
         busPortal.setOnClickListener{
             var busActivity = Intent(this, OCTranspo::class.java)
-            startActivity(busActivity)
+            startActivity(busActivity)}
 
           val moviePortal = findViewById<Button>(R.id.moviePortal)
         moviePortal.setOnClickListener {

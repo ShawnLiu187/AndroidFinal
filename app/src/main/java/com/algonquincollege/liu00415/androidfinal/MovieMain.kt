@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.movie_cell.*
 import kotlinx.android.synthetic.main.movie_main.*
 
-class MovieMain : Activity() {
+class MovieMain : AppCompatActivity() {
 
     //////////////////// Movie Information... I feel like a database will make this easier.
     var movieTitles = ArrayList<String>()
