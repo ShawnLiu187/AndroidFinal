@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieMain" />
+        <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieDetails" />
+        <activity android:name="com.example.tylercrozman.tylerfinalportion.SavedMovieDetails" />
     </application>
 
 </manifest>
