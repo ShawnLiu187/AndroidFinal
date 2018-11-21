@@ -17,15 +17,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-         oc_branch
+
+        <activity android:name=".foodList" />
+        <activity android:name=".newsList"></activity>
+
         <activity android:name=".OCTranspo">
-
         </activity>
-
         <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieMain" />
         <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieDetails" />
         <activity android:name="com.example.tylercrozman.tylerfinalportion.SavedMovieDetails" />
-        master
+    
     </application>
 
 </manifest>
