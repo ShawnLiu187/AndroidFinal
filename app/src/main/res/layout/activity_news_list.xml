@@ -26,7 +26,7 @@
         android:layout_below="@id/sendButton"
         android:id="@+id/listView"></ListView>
     <ProgressBar
-        android:id="@+id/progress"
+        android:id="@+id/progressNews"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

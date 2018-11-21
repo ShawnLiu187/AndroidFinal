@@ -3,19 +3,19 @@ package com.algonquincollege.liu00415.androidfinal
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
 
 //progress bar
 //snackbar
 //custom dialog notificaiton
 
-class OCTranspo : Activity() {
+class OCTranspo : AppCompatActivity() {
 
 
     var stopList = ArrayList<String>()
@@ -37,25 +37,25 @@ class OCTranspo : Activity() {
 
         Toast.makeText(this, "OC Transpo App, David McCreath", Toast.LENGTH_LONG).show()
 
-//        val lrtUpdate = findViewById<Button>(R.id.lrt_update)
-//        lrtUpdate.setOnClickListener{
-//            var lrtMessage = layoutInflater.inflate(R.layout.lrt_message, null)
-//
-//            var builder = AlertDialog.Builder(this)
-//            //builder.setTitle("Question")
-//            builder.setView(lrtMessage)
-//            builder.setPositiveButton("okay", { dialog, id ->
-//            })
-//            builder.setNegativeButton("okay", { dialog, id ->
-//            });
-//            var dialog = builder.create()
-//            dialog.show()
-//        }
+        val lrtUpdate = findViewById<Button>(R.id.lrt_update)
+        lrtUpdate.setOnClickListener{
+            var lrtMessage = layoutInflater.inflate(R.layout.lrt_message, null)
 
-//        var addStop = findViewById<Button>(R.id.addStop)
-//        addStop.setOnClickListener{
-//            Snackbar.make(addStop, "Stop Added", Snackbar.LENGTH_SHORT).show()
-//        }
+            var builder = AlertDialog.Builder(this)
+            //builder.setTitle("Question")
+            builder.setView(lrtMessage)
+            builder.setPositiveButton("okay", { dialog, id ->
+            })
+            builder.setNegativeButton("okay", { dialog, id ->
+            });
+            var dialog = builder.create()
+            dialog.show()
+        }
+
+        var addStop = findViewById<Button>(R.id.addStop)
+        addStop.setOnClickListener{
+            Snackbar.make(addStop, "Stop Added", Snackbar.LENGTH_SHORT).show()
+        }
 
     }
 

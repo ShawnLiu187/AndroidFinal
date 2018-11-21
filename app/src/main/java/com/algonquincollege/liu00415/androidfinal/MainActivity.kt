@@ -8,11 +8,13 @@ import com.example.tylercrozman.tylerfinalportion.MovieMain
 import kotlinx.android.synthetic.main.activity_main.*
 
 
+
 class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val foodButton = findViewById<Button>(R.id.foodPortal)
         foodButton.setOnClickListener {
@@ -38,5 +40,14 @@ class MainActivity : Activity() {
             var busActivity = Intent(this, OCTranspo::class.java)
             startActivity(busActivity)
         }
+
+          val moviePortal = findViewById<Button>(R.id.moviePortal)
+        moviePortal.setOnClickListener {
+            var destinationFilm = Intent(this, MovieMain::class.java)
+            startActivity(destinationFilm)
+
+
+        }
+
     }
 }
