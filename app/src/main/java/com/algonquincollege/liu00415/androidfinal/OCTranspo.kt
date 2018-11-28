@@ -127,6 +127,8 @@ class OCTranspo : AppCompatActivity() {
 
                 stopList.add("$savedStopNumber - $savedStopName")
                 stopAdapter.notifyDataSetChanged()
+
+                Snackbar.make(findViewById(R.id.addStop),"Added Stop: $savedStopNumber $savedStopName",Snackbar.LENGTH_SHORT).show()
             }
 
             if (requestCode == 69){
