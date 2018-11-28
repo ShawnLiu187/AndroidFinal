@@ -26,6 +26,7 @@ class OCTranspo : AppCompatActivity() {
 
 
     var stopList = ArrayList<String>()
+    var stopPosition = 0
     lateinit var stopAdapter: MyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,17 +34,73 @@ class OCTranspo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_octranspo)
 
+        // DISPLAY LIST OF STOPS FROM DATABASE
+
+        val dbHelper = MyOpenHelper()
+        val db = dbHelper.writableDatabase
+        val results = db.query( TABLE_NAME, arrayOf("_id", "stop_number", "stop_name"), null, null, null, null, null, null)
+
+        results.moveToFirst()
+        val stopNumberIndex = results.getColumnIndex("stop_number")
+        val stopNameIndex = results.getColumnIndex("stop_name")
+
+        while (!results.isAfterLast())
+        {
+            var stopNumber = results.getString(stopNumberIndex)
+            var stopName = results.getString(stopNameIndex)
+            stopList.add(stopNumber + " - " + stopName)
+
+            results.moveToNext() //go to next row in table
+        }
+
+
+        // ADD OR VIEW A STOP
+
+        val getStopActivity = Intent(this, OCTranspoStopInfo::class.java)
+
         val stopListView = findViewById<ListView>(R.id.stopListView)
         stopAdapter = MyAdapter(this)
 
         stopListView?.setAdapter(stopAdapter)
 
-        val getStopActivity = Intent(this, OCTranspoStopInfo::class.java)
+        stopListView.onItemClickListener = AdapterView.OnItemClickListener { adapterView, View, position, id ->
+
+            stopPosition = position
+
+            val dbHelper = MyOpenHelper()
+            val db = dbHelper.writableDatabase
+            val results = db.query( TABLE_NAME, arrayOf("_id", "stop_number", "stop_name"), null,null,null,null,null,null)
+
+            //val showContactActivity = Intent(this, OCTranspoStopInfo::class.java)
+
+            results.moveToFirst()
+
+            while (!results.isAfterLast())
+            {
+                val id = results.getInt(0)
+                val pos = position + 1
+
+                if (id === pos)
+                {
+                    getStopActivity.putExtra("stopNumber", results.getString(stopNumberIndex))
+                    getStopActivity.putExtra("stopSaved", "true")
+                    getStopActivity.putExtra("id", id)
+                    break
+                }
+
+                results.moveToNext()
+            }
+
+            startActivityForResult(getStopActivity,69)
+        }
+
+
 
         var addStop = findViewById<Button>(R.id.addStop)
         addStop.setOnClickListener{
             val stopNumber = findViewById<EditText>(R.id.stopNumber)
             getStopActivity.putExtra("stopNumber", stopNumber.text)
+            getStopActivity.putExtra("stopSaved", "false")
             startActivityForResult(getStopActivity, 420)
         }
 
@@ -55,19 +112,33 @@ class OCTranspo : AppCompatActivity() {
 
         if (resultCode == Activity.RESULT_OK){
 
-            var savedStopName = data?.getStringExtra("stopName")
-            var savedStopNumber = data?.getStringExtra("stopNumber")
+            if (requestCode == 420){
 
-            val dbHelper = MyOpenHelper()
-            val db = dbHelper.writableDatabase
+                var savedStopName = data?.getStringExtra("stopName")
+                var savedStopNumber = data?.getStringExtra("stopNumber")
 
-            val newStop = ContentValues()
-            newStop.put("stop_number", savedStopNumber)
-            newStop.put("stop_name", savedStopName)
-            db.insert(TABLE_NAME, "", newStop)
+                val dbHelper = MyOpenHelper()
+                val db = dbHelper.writableDatabase
 
-            stopList.add("$savedStopNumber - $savedStopName")
-            stopAdapter.notifyDataSetChanged()
+                val newStop = ContentValues()
+                newStop.put("stop_number", savedStopNumber)
+                newStop.put("stop_name", savedStopName)
+                db.insert(TABLE_NAME, "", newStop)
+
+                stopList.add("$savedStopNumber - $savedStopName")
+                stopAdapter.notifyDataSetChanged()
+            }
+
+            if (requestCode == 69){
+
+                val dbHelper = MyOpenHelper()
+                val db = dbHelper.writableDatabase
+                db.delete(TABLE_NAME, "_id=${data?.getStringExtra("id")}.", null)
+                stopList.removeAt(stopPosition)
+                stopAdapter.notifyDataSetChanged()
+
+            }
+
 
         }
 

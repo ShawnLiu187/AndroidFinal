@@ -27,6 +27,7 @@ class OCTranspoStopInfo : AppCompatActivity() {
     lateinit var oc_progressBar: ProgressBar
     lateinit var stopName: String
     lateinit var saveStop: Button
+    lateinit var deleteStop: Button
     lateinit var stopNameTextView: TextView
 
 
@@ -51,9 +52,20 @@ class OCTranspoStopInfo : AppCompatActivity() {
         stopName = "Unknown stop"
         stopNameTextView = findViewById(R.id.stopName)
 
+        deleteStop = findViewById(R.id.deleteStop)
+        deleteStop.setOnClickListener{
+            val resultIntent = Intent()
+            //resultIntent.putExtra("AddOrDelete", "Delete")
+            resultIntent.putExtra("id", intent.extras.get("id").toString())
+
+            setResult(Activity.RESULT_OK, resultIntent)
+            finish()
+        }
+
         saveStop = findViewById(R.id.saveStop)
         saveStop.setOnClickListener{
             val resultIntent = Intent()
+            //resultIntent.putExtra("AddOrDelete", "Add")
             resultIntent.putExtra("stopNumber", stopNumber)
             resultIntent.putExtra("stopName", stopName)
 
@@ -125,9 +137,16 @@ class OCTranspoStopInfo : AppCompatActivity() {
         override fun onPostExecute(result: String?) {
             stopAdapter.notifyDataSetChanged()
             oc_progressBar.visibility = View.INVISIBLE
-            saveStop.visibility = View.VISIBLE
             stopNameTextView.visibility = View.VISIBLE
             stopNameTextView.text = stopName
+
+            if (intent.extras.get("stopSaved").toString() == "false" ){
+                saveStop.visibility = View.VISIBLE
+            }
+            else{
+                deleteStop.visibility = View.VISIBLE
+            }
+
 
         }
 
