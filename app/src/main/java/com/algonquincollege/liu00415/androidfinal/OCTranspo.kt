@@ -151,7 +151,7 @@ class OCTranspo : AppCompatActivity() {
 
 
     val DATABASE_NAME = "StopNumbers.db"
-    val VERSION_NUM = 1
+    val VERSION_NUM = 2
     val TABLE_NAME = "StopNumbers"
 
     inner class MyOpenHelper: SQLiteOpenHelper(this@OCTranspo, DATABASE_NAME, null, VERSION_NUM){

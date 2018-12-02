@@ -23,12 +23,25 @@ class OCTranspoStopInfo : AppCompatActivity() {
     var routeNumberList = ArrayList<String>()
     var routeNameList = ArrayList<String>()
     var routeFullName = ArrayList<String>()
+    var routeDirectionList = ArrayList<String>()
     lateinit var stopAdapter: MyAdapter
     lateinit var oc_progressBar: ProgressBar
     lateinit var stopName: String
     lateinit var saveStop: Button
     lateinit var deleteStop: Button
     lateinit var stopNameTextView: TextView
+
+    //  ROUTE INIT  //
+    lateinit var routeDirection: String
+    lateinit var routeName: String
+    lateinit var routeNumber: String
+
+    var destination: String = "Not Available"
+    var latitude: String = "Not Available"
+    var longitude: String = "Not Available"
+    var speed: String = "Not Available"
+    var startTime: String = "Not Available"
+    var delay: String = "Not Available"
 
 
     // ON CREATE //
@@ -72,7 +85,26 @@ class OCTranspoStopInfo : AppCompatActivity() {
             setResult(Activity.RESULT_OK, resultIntent)
             finish()
         }
+
+        routeListView.onItemClickListener = AdapterView.OnItemClickListener { adapterView, View, position, id ->
+
+            routeNumber = routeNumberList.get(position)
+            routeDirection = routeDirectionList.get(position)
+            routeName = routeNameList.get(position)
+//            var data = Bundle()
+//            data.putString("routeNumber", routeNumber)
+//            data.putString("stopNumber", stopNumber)
+//            data.putString("routeDirection", routeDirection)
+//            data.putString("routeName", routeName)
+//            var detailActivity = Intent(this, OCTranspoRouteInfo::class.java)
+//            detailActivity.putExtras(data)
+//            startActivityForResult(detailActivity, 35)
+            var routeQuery = GetRouteInfo()
+            routeQuery.execute(routeNumber, stopNumber)
+
+        }
     }
+
 
     // QUERY STUFF //
 
@@ -105,6 +137,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
                     if (xpp.name == "RouteHeading"){
                         xpp.next()
                         routeNameList.add(xpp.text)
+                    }
+                    if (xpp.name == "Direction"){
+                        xpp.next()
+                        routeDirectionList.add(xpp.text)
                     }
                     if (xpp.name == "StopDescription"){
                         xpp.next()
@@ -150,6 +186,118 @@ class OCTranspoStopInfo : AppCompatActivity() {
 
         }
 
+    }
+
+    //  ROUTE QUERY STUFF   //
+
+    inner class GetRouteInfo : AsyncTask<String, Int, String>() {
+
+        override fun doInBackground(vararg params: String?): String {
+
+            val url = URL("https://api.octranspo1.com/v1.2/GetNextTripsForStop?appID=223eb5c3&&apiKey=ab27db5b435b8c8819ffb8095328e775&stopNo=${params[1]}&routeNo=${params[0]}")
+            val connection = url.openConnection() as HttpURLConnection
+            val response = connection.inputStream
+
+            val factory = XmlPullParserFactory.newInstance()
+            factory.isNamespaceAware = false
+            val xpp = factory.newPullParser()
+            xpp.setInput(response, "UTF-8")
+
+            var selectedRoute = false
+
+            while (xpp.eventType != XmlPullParser.END_DOCUMENT){
+
+                if (xpp.eventType == XmlPullParser.START_TAG){
+                    if (xpp.name == "Direction"){
+                        xpp.next()
+                        if(xpp.text == routeDirection){
+                            selectedRoute = true
+                        }
+//                        else{
+//                            selectedRoute = false
+//                        }
+                    }
+                }
+
+                while (selectedRoute == true){
+                    xpp.next()
+
+                    if (xpp.eventType == XmlPullParser.START_TAG){
+
+                        if (xpp.name == "TripDestination"){
+                            xpp.next()
+                            if (xpp.text != null){destination = xpp.text}
+                        }
+                        if (xpp.name == "TripStartTime"){
+                            xpp.next()
+                            if (xpp.text != null){startTime = xpp.text}
+                        }
+                        if (xpp.name == "AdjustedScheduleTime"){
+                            xpp.next()
+                            if (xpp.text != null){delay = xpp.text}
+                        }
+                        if (xpp.name == "GPSSPEED"){
+                            xpp.next()
+                            if (xpp.text != null){speed = xpp.text}
+                        }
+                        if (xpp.name == "SPEED"){
+                            xpp.next()
+                            if (xpp.text != null){speed = xpp.text}
+                        }
+                        if (xpp.name == "GPSSpeed"){
+                            xpp.next()
+                            if (xpp.text != null){speed = xpp.text}
+                        }
+                        if (xpp.name == "Speed"){
+                            xpp.next()
+                            if (xpp.text != null){speed = xpp.text}
+                        }
+                        if (xpp.name == "Latitude"){
+                            xpp.next()
+                            if (xpp.text != null){latitude = xpp.text}
+                        }
+                        if (xpp.name == "Longitude"){
+                            xpp.next()
+                            if (xpp.text != null){longitude = xpp.text}
+                        }
+
+                    }
+
+                    if (xpp.eventType == XmlPullParser.END_TAG){
+                        if (xpp.name == "Trip"){
+                            selectedRoute = false
+                        }
+                    }
+                }
+
+                xpp.next()
+
+            }
+
+            return "Done"
+        }
+
+        override fun onPostExecute(result: String?) {
+
+            var routeData = Bundle()
+            routeData.putString("RouteNumber", routeNumber)
+            routeData.putString("RouteName", routeName)
+            routeData.putString("Destination", destination)
+            routeData.putString("Location", "Lat: $latitude Long: $longitude")
+            routeData.putString("Speed", speed)
+            routeData.putString("StartTime", startTime)
+            routeData.putString("Delay", delay)
+
+            showRouteDetails(routeData)
+
+
+        }
+    }
+
+    fun showRouteDetails(data: Bundle){
+        var detailActivity = Intent(this, OCTranspoRouteDetails::class.java)
+        detailActivity.putExtras(data)
+        startActivityForResult(detailActivity, 35)
     }
 
     // LIST VIEW STUFF //
