@@ -41,6 +41,7 @@ class OCTranspo : AppCompatActivity() {
         val results = db.query( TABLE_NAME, arrayOf("_id", "stop_number", "stop_name"), null, null, null, null, null, null)
 
         results.moveToFirst()
+        val stopIdIndex = results.getColumnIndex("_id")
         val stopNumberIndex = results.getColumnIndex("stop_number")
         val stopNameIndex = results.getColumnIndex("stop_name")
 
@@ -75,18 +76,23 @@ class OCTranspo : AppCompatActivity() {
 
             results.moveToFirst()
 
+            val pos = position + 1
+            var id = 1
+
             while (!results.isAfterLast())
             {
-                val id = results.getInt(0)
-                val pos = position + 1
+                //val id = results.getInt(0)
+
 
                 if (id === pos)
                 {
                     getStopActivity.putExtra("stopNumber", results.getString(stopNumberIndex))
                     getStopActivity.putExtra("stopSaved", "true")
-                    getStopActivity.putExtra("id", id)
+                    getStopActivity.putExtra("id", results.getString(stopIdIndex))
                     break
                 }
+
+                id = id + 1
 
                 results.moveToNext()
             }
@@ -98,10 +104,16 @@ class OCTranspo : AppCompatActivity() {
 
         var addStop = findViewById<Button>(R.id.addStop)
         addStop.setOnClickListener{
-            val stopNumber = findViewById<EditText>(R.id.stopNumber)
-            getStopActivity.putExtra("stopNumber", stopNumber.text)
-            getStopActivity.putExtra("stopSaved", "false")
-            startActivityForResult(getStopActivity, 420)
+            val addButton = findViewById<EditText>(R.id.stopNumber)
+            val stopNumber = addButton.text
+            if (stopNumber.toString() != ""){
+                getStopActivity.putExtra("stopNumber", stopNumber)
+                getStopActivity.putExtra("stopSaved", "false")
+                startActivityForResult(getStopActivity, 420)
+            }else{
+                Toast.makeText(this, "Please enter a stop number", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
     }
@@ -138,7 +150,7 @@ class OCTranspo : AppCompatActivity() {
                 db.delete(TABLE_NAME, "_id=${data?.getStringExtra("id")}.", null)
                 stopList.removeAt(stopPosition)
                 stopAdapter.notifyDataSetChanged()
-
+                Toast.makeText(this, "Removed ${data?.getStringExtra("fullname")}", Toast.LENGTH_LONG).show()
             }
 
 
@@ -151,7 +163,7 @@ class OCTranspo : AppCompatActivity() {
 
 
     val DATABASE_NAME = "StopNumbers.db"
-    val VERSION_NUM = 2
+    val VERSION_NUM = 4
     val TABLE_NAME = "StopNumbers"
 
     inner class MyOpenHelper: SQLiteOpenHelper(this@OCTranspo, DATABASE_NAME, null, VERSION_NUM){

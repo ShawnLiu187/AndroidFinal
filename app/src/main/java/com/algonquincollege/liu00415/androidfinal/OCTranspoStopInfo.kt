@@ -43,7 +43,6 @@ class OCTranspoStopInfo : AppCompatActivity() {
     var startTime: String = "Not Available"
     var delay: String = "Not Available"
 
-
     // ON CREATE //
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +67,7 @@ class OCTranspoStopInfo : AppCompatActivity() {
         deleteStop = findViewById(R.id.deleteStop)
         deleteStop.setOnClickListener{
             val resultIntent = Intent()
-            //resultIntent.putExtra("AddOrDelete", "Delete")
+            resultIntent.putExtra("fullname", stopName)
             resultIntent.putExtra("id", intent.extras.get("id").toString())
 
             setResult(Activity.RESULT_OK, resultIntent)
@@ -91,14 +90,7 @@ class OCTranspoStopInfo : AppCompatActivity() {
             routeNumber = routeNumberList.get(position)
             routeDirection = routeDirectionList.get(position)
             routeName = routeNameList.get(position)
-//            var data = Bundle()
-//            data.putString("routeNumber", routeNumber)
-//            data.putString("stopNumber", stopNumber)
-//            data.putString("routeDirection", routeDirection)
-//            data.putString("routeName", routeName)
-//            var detailActivity = Intent(this, OCTranspoRouteInfo::class.java)
-//            detailActivity.putExtras(data)
-//            startActivityForResult(detailActivity, 35)
+
             var routeQuery = GetRouteInfo()
             routeQuery.execute(routeNumber, stopNumber)
 
