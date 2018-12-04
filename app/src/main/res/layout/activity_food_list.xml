@@ -26,12 +26,12 @@
         android:layout_below="@id/foodList_toolbar"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/sendButton"
-        android:id="@+id/editText"/>
+        android:id="@+id/foodEdit"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/sendButton"
-        android:id="@+id/listView"></ListView>
+        android:id="@+id/foodListView"></ListView>
     <ProgressBar
         android:id="@+id/progress"
         android:layout_alignParentBottom="true"

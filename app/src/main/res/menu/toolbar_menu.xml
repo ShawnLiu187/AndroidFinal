@@ -2,24 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/action1"
-        android:title="Choice 1"
+        android:title="News Portal"
         android:icon="@drawable/ball"
         android:orderInCategory="101"
         app:showAsAction="always" />
 
     <item android:id="@+id/action2"
-        android:title="Choice 2"
+        android:title="OCTranspo"
         android:icon="@drawable/car"
         android:orderInCategory="105"
         app:showAsAction="always" />
 
     <item android:id="@+id/action3"
-        android:title="Choice 3"
+        android:title="Movie Portal"
         android:icon="@drawable/city"
         android:orderInCategory="110"
         app:showAsAction="always" />
     <item android:id="@+id/action4"
-        android:title="Choice 4"
+        android:title="Help"
         android:icon="@drawable/gas"
         android:orderInCategory="120"
         app:showAsAction="never" />

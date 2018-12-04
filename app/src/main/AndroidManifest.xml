@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.algonquincollege.liu00415.androidfinal">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +11,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,16 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".foodList" />
-        <activity android:name=".newsList"></activity>
-
-        <activity android:name=".OCTranspo">
-        </activity>
+        <activity android:name=".newsList" />
+        <activity android:name=".OCTranspo"></activity>
         <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieMain" />
         <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieDetails" />
         <activity android:name="com.example.tylercrozman.tylerfinalportion.SavedMovieDetails" />
-    
+        <activity android:name=".FetchFood"></activity>
     </application>
 
 </manifest>
