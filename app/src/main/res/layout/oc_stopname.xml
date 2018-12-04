@@ -5,9 +5,11 @@
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
         android:layout_weight="1"
         android:id="@+id/stopName"
-        android:gravity="left"/>
+        android:gravity="left"
+        android:textSize="20sp"
+        />
 
 </LinearLayout>

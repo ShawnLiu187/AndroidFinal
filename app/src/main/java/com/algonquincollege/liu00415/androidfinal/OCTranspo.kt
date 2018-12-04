@@ -34,7 +34,9 @@ class OCTranspo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_octranspo)
 
-        // DISPLAY LIST OF STOPS FROM DATABASE
+        /**
+         *  Display stored stops in the list view
+         */
 
         val dbHelper = MyOpenHelper()
         val db = dbHelper.writableDatabase
@@ -55,14 +57,16 @@ class OCTranspo : AppCompatActivity() {
         }
 
 
-        // ADD OR VIEW A STOP
-
         val getStopActivity = Intent(this, OCTranspoStopInfo::class.java)
 
         val stopListView = findViewById<ListView>(R.id.stopListView)
         stopAdapter = MyAdapter(this)
 
         stopListView?.setAdapter(stopAdapter)
+
+        /** Puts click listener on each stop
+         * user clicks on stop to launch OCTranspoStopInfo activity
+         * */
 
         stopListView.onItemClickListener = AdapterView.OnItemClickListener { adapterView, View, position, id ->
 
@@ -100,10 +104,12 @@ class OCTranspo : AppCompatActivity() {
             startActivityForResult(getStopActivity,69)
         }
 
+        /**
+         * View Stop button launches OCTranspoStopInfo activity with stop number entered by user
+         * */
 
-
-        var addStop = findViewById<Button>(R.id.addStop)
-        addStop.setOnClickListener{
+        var viewStop = findViewById<Button>(R.id.addStop)
+        viewStop.setOnClickListener{
             val addButton = findViewById<EditText>(R.id.stopNumber)
             val stopNumber = addButton.text
             if (stopNumber.toString() != ""){
@@ -124,6 +130,11 @@ class OCTranspo : AppCompatActivity() {
 
         if (resultCode == Activity.RESULT_OK){
 
+            /**
+             * Request code 420 means user wants to save stop from OCTranspoStopInfo activity
+             * Adds stop to database and reloads list view
+             * */
+
             if (requestCode == 420){
 
                 var savedStopName = data?.getStringExtra("stopName")
@@ -143,6 +154,11 @@ class OCTranspo : AppCompatActivity() {
                 Snackbar.make(findViewById(R.id.addStop),"Added Stop: $savedStopNumber $savedStopName",Snackbar.LENGTH_SHORT).show()
             }
 
+            /**
+             * Request code 69 means user wants to delete stop from OCTranspoStopInfo activity
+             * Removes stop from database, reloads list view
+             * */
+
             if (requestCode == 69){
 
                 val dbHelper = MyOpenHelper()
@@ -161,6 +177,9 @@ class OCTranspo : AppCompatActivity() {
 
     // DATABASE STUFF //
 
+    /**
+     * Database OpenHelper
+     * */
 
     val DATABASE_NAME = "StopNumbers.db"
     val VERSION_NUM = 4
@@ -185,7 +204,9 @@ class OCTranspo : AppCompatActivity() {
     }
 
 
-    // LIST VIEW STUFF
+    /**
+     * List view adapter
+     * */
 
     inner class MyAdapter(ctx : Context) : ArrayAdapter<String>(ctx, 0 ) {
 

@@ -9,6 +9,11 @@ class OCTranspoRouteDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_octranspo_route_details)
 
+        /**
+         * Send route data to fragment
+         * Load Fragment
+         */
+
         var newRouteFragment = OCTranspoFragment()
         newRouteFragment.arguments = intent.extras
         var transition = getFragmentManager().beginTransaction()

@@ -14,6 +14,10 @@ class OCTranspoRouteInfo : AppCompatActivity() {
     lateinit var routeDirection: String
     lateinit var routeName: String
 
+    /**
+     *  Initialize all route data with default data
+     * */
+
     var destination: String = "Not Available"
     var latitude: String = "Not Available"
     var longitude: String = "Not Available"
@@ -25,6 +29,10 @@ class OCTranspoRouteInfo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_octranspo_route_info)
 
+        /**
+         *  Get route data from intent extras, call GetNextTripsForStop
+         */
+
         val routeNumber = intent.extras.get("routeNumber").toString()
         val stopNumber = intent.extras.get("stopNumber").toString()
         routeDirection = intent.extras.get("routeDirection").toString()
@@ -33,6 +41,10 @@ class OCTranspoRouteInfo : AppCompatActivity() {
         var routeQuery = GetRouteInfo()
         routeQuery.execute(routeNumber, stopNumber)
     }
+
+    /**
+     *
+     */
 
     inner class GetRouteInfo : AsyncTask<String, Int, String>() {
 

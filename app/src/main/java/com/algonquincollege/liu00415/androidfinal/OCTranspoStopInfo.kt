@@ -18,6 +18,10 @@ import android.content.Intent
 
 class OCTranspoStopInfo : AppCompatActivity() {
 
+    /**
+     *  Initialize variables
+     */
+
     // INIT STUFF //
 
     var routeNumberList = ArrayList<String>()
@@ -35,6 +39,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
     lateinit var routeDirection: String
     lateinit var routeName: String
     lateinit var routeNumber: String
+
+    /**
+     * Initialize route data with default values because octranspo sucks
+     */
 
     var destination: String = "Not Available"
     var latitude: String = "Not Available"
@@ -64,6 +72,11 @@ class OCTranspoStopInfo : AppCompatActivity() {
         stopName = "Unknown stop"
         stopNameTextView = findViewById(R.id.stopName)
 
+        /**
+         *  Delete button to delete stop being displayed
+         *  Takes user back to first activity
+         */
+
         deleteStop = findViewById(R.id.deleteStop)
         deleteStop.setOnClickListener{
             val resultIntent = Intent()
@@ -74,16 +87,25 @@ class OCTranspoStopInfo : AppCompatActivity() {
             finish()
         }
 
+        /**
+         *  Add button to save stop being displayed
+         *  Takes user back to first activity
+         */
+
         saveStop = findViewById(R.id.saveStop)
         saveStop.setOnClickListener{
             val resultIntent = Intent()
-            //resultIntent.putExtra("AddOrDelete", "Add")
             resultIntent.putExtra("stopNumber", stopNumber)
             resultIntent.putExtra("stopName", stopName)
 
             setResult(Activity.RESULT_OK, resultIntent)
             finish()
         }
+
+        /**
+         *  Item click listeners for user to select a bus route
+         *  Runs GetRouteInfo then starts OCTranspoRouteDetails activity
+         */
 
         routeListView.onItemClickListener = AdapterView.OnItemClickListener { adapterView, View, position, id ->
 
@@ -100,6 +122,9 @@ class OCTranspoStopInfo : AppCompatActivity() {
 
     // QUERY STUFF //
 
+    /**
+     *  API call that returns a list of bus routes for the chosen stop
+     */
 
     inner class GetStopInfo : AsyncTask<String, Int, String>(){
 
@@ -118,6 +143,11 @@ class OCTranspoStopInfo : AppCompatActivity() {
 
             progress += 50
             publishProgress()
+
+            /**
+             * Parse through xml response for route number, heading, direction and description tags
+             * Save the data in arrays
+             */
 
             while (xpp.eventType != XmlPullParser.END_DOCUMENT){
 
@@ -145,6 +175,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
             progress += 25
             publishProgress()
 
+            /**
+             * Combine values from route number and route name arrays for full name to be displayed to user
+             */
+
             var i = 0
             val arrayLength = routeNumberList.size
             while (i < arrayLength){
@@ -161,6 +195,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
         override fun onProgressUpdate(vararg values: Int?) {
             oc_progressBar.progress = progress
         }
+
+        /**
+         * Hides progress bar, shows save or delete button, reloads list view
+         */
 
         override fun onPostExecute(result: String?) {
             stopAdapter.notifyDataSetChanged()
@@ -181,6 +219,11 @@ class OCTranspoStopInfo : AppCompatActivity() {
     }
 
     //  ROUTE QUERY STUFF   //
+
+    /**
+     *  API call that gets information about selected route
+     *  Sends data to OCTranspoRouteDetails activity
+     */
 
     inner class GetRouteInfo : AsyncTask<String, Int, String>() {
 
@@ -210,6 +253,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
 //                        }
                     }
                 }
+
+                /**
+                 * Parse through xml response and pull data from select tags
+                 */
 
                 while (selectedRoute == true){
                     xpp.next()
@@ -269,6 +316,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
             return "Done"
         }
 
+        /**
+         * Take route data and send to showRouteDetails function below
+         */
+
         override fun onPostExecute(result: String?) {
 
             var routeData = Bundle()
@@ -286,6 +337,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
         }
     }
 
+    /**
+     *  Function that launches OCTranspoRouteDetails activity
+     */
+
     fun showRouteDetails(data: Bundle){
         var detailActivity = Intent(this, OCTranspoRouteDetails::class.java)
         detailActivity.putExtras(data)
@@ -293,6 +348,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
     }
 
     // LIST VIEW STUFF //
+
+    /**
+     *  List View adapter
+     */
 
     inner class MyAdapter(ctx : Context) : ArrayAdapter<String>(ctx, 0 ) {
 

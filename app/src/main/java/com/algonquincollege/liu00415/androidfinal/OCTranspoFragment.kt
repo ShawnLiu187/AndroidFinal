@@ -14,6 +14,10 @@ import android.widget.TextView
 
 class OCTranspoFragment : Fragment(){
 
+    /**
+     * Inflate fragment and set text views to route information
+     */
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
@@ -23,8 +27,6 @@ class OCTranspoFragment : Fragment(){
 
         var fullname = "${routeData.getString("RouteNumber")} ${routeData.getString("Destination")}"
 
-//        var name = screen.findViewById<TextView>(R.id.name)
-//        name.text = fullname
         var destination = screen.findViewById<TextView>(R.id.destination)
         destination.text = fullname
         var location = screen.findViewById<TextView>(R.id.location)
