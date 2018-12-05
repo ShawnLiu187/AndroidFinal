@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_one"
+        android:title="cat"
+        android:icon="@drawable/cat"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+    <item android:id="@+id/action_two"
+        android:title="dog"
+        android:icon="@drawable/dog"
+        android:orderInCategory="200"
+        app:showAsAction="always" />
+    <item android:id="@+id/action_three"
+        android:title="falcon"
+        android:icon="@drawable/falcon"
+        android:orderInCategory="300"
+        app:showAsAction="always" />
+    <item android:id="@+id/action_four"
+        android:title="dinosaur"
+        android:icon="@drawable/dinosaur"
+        android:orderInCategory="400"
+        app:showAsAction="never" />
+</menu>

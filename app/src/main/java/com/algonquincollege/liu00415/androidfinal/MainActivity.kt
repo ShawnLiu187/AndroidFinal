@@ -32,19 +32,19 @@ class MainActivity : Activity() {
         }
 
 
-
         var busPortal = findViewById<Button>(R.id.busPortal)
-        busPortal.setOnClickListener{
+        busPortal.setOnClickListener {
             var busActivity = Intent(this, OCTranspo::class.java)
             startActivity(busActivity)}
 
-          val moviePortal = findViewById<Button>(R.id.moviePortal)
-        moviePortal.setOnClickListener {
-            var destinationFilm = Intent(this, MovieMain::class.java)
-            startActivity(destinationFilm)
+            val moviePortal = findViewById<Button>(R.id.moviePortal)
+            moviePortal.setOnClickListener {
+                var destinationFilm = Intent(this, MovieMain::class.java)
+                startActivity(destinationFilm)
 
+
+            }
 
         }
-
     }
 }

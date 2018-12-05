@@ -1,3 +1,61 @@
 <resources>
     <string name="app_name">AndroidFinal</string>
+
+
+    <!--********** Movie Main **************-->
+
+
+    <string name="ListLabel">Movies Listed:</string>
+    <!-- ******** Details Page ************ -->
+    <string name="MovieTitle">Title: \n   </string>
+    <string name="MovieReleased">Released:\n  </string>
+    <string name="MovieMetascore">Metascore: \n   </string>
+    <string name="imdbId">IMDB Id:\n  </string>
+    <string name="imdbRating"> Rating: \n </string>
+    <string name="imdbVotes"> Votes: \n   </string>
+    <string name="MovieRuntime">Runtime: \n   </string>
+    <string name="Director">Director: \n  </string>
+    <string name="MovieGenre">Genre: \n   </string>
+    <string name="MovieRated">Rated:  \n  </string>
+    <string name="MovieLanguage">Language: \n </string>
+    <string name="MovieCountry">Country: \n   </string>
+    <string name="MovieType">Type: \n </string>
+    <string name="MovieWriter">Writer: \n </string>
+    <string name="MoviePlot">Plot: \n </string>
+    <string name="MovieActors">Actors: \n </string>
+    <string name="MovieAwards">Awards: \n </string>
+
+
+    <!--********** Movie Stats **************-->
+    <string name="MovieDino">Movie Dino Brings Statistics! </string>
+    <string name="LongestMovie"> Longest Movie </string>
+    <string name="ShortestMovie">Shortest Movie</string>
+    <string name="MovieAvg"> Average Length</string>
+    <string name="Oldest"> Oldest Movie </string>
+    <string name="Newest">Newest Movie </string>
+    <string name="MovieAvgR">Average Release</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>
