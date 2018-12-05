@@ -1,18 +1,23 @@
-package com.example.tylercrozman.tylerfinalportion
+package com.algonquincollege.liu00415.androidfinal
+
 
 import android.app.Activity
+import android.os.Bundle
+import android.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
-import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
-import com.algonquincollege.liu00415.androidfinal.R
+import android.view.ViewGroup
+import android.widget.*
+import com.example.tylercrozman.tylerfinalportion.MovieMain
+//import kotlinx.android.synthetic.main.fragment_chat.*
 import kotlinx.android.synthetic.main.movie_details.*
+import kotlinx.android.synthetic.main.movie_main.*
+import org.w3c.dom.Document
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import java.io.FileInputStream
@@ -21,97 +26,119 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 
-class MovieDetails : Activity() {
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
-    lateinit var ActivityMovieTitle : String
-    lateinit var ActivityMovieReleased : String
-    lateinit var ActivityMovieMetascore: String
-    lateinit var ActivityimdbId: String
-    lateinit var ActivityimdbRating: String
-    lateinit var ActivityimdbVotes: String
-    lateinit var ActivityMovieRuntime: String
-    lateinit var ActivityMovieGenre: String
-    lateinit var ActivityMovieRated: String
-    lateinit var ActivityMovieLanguage: String
-    lateinit var ActivityMovieCountry: String
-    lateinit var ActivityMovieType: String
-    lateinit var ActivityMovieWriter: String
-    lateinit var ActivityMoviePlot: String
-    lateinit var ActivityMovieActors: String
-    lateinit var ActivityMovieAwards: String
-    lateinit var ActivityDirector: String
-    lateinit var Year: String
-    lateinit var ActivityMoviePoster : Bitmap
+/**
+ * A simple [Fragment] subclass.
+ *
+ */
+class MovieFragment : Fragment() {
+    var isTablet = false
 
+    lateinit var transferredData: ArrayList<String>
+    lateinit var FetchOrSaved: String
     lateinit var UserInput: String
+    var ID: Long = 0
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.movie_details)
-        Loading.visibility = View.INVISIBLE
 
-        var FetchOrSaved = intent.extras.get("DataSource")
+
+
+
+    lateinit var parentDocument: MovieMain
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        var screen = inflater.inflate(R.layout.movie_details, container, false)
+
+
+
+
+        var Loading = screen.findViewById<ProgressBar>(R.id.Loading)
+
+        var Title = screen.findViewById<TextView>(R.id.Title)
+        var MovieType = screen.findViewById<TextView>(R.id.MovieType)
+        var Rated = screen.findViewById<TextView>(R.id.Rated)
+        var Released = screen.findViewById<TextView>(R.id.Released)
+        var Runtime = screen.findViewById<TextView>(R.id.Runtime)
+        var Genre = screen.findViewById<TextView>(R.id.Genre)
+        var Director = screen.findViewById<TextView>(R.id.Director)
+        var Writer = screen.findViewById<TextView>(R.id.Writer)
+        var Actors = screen.findViewById<TextView>(R.id.Actors)
+        var Plot = screen.findViewById<TextView>(R.id.Plot)
+        var Language = screen.findViewById<TextView>(R.id.Language)
+        var Country = screen.findViewById<TextView>(R.id.Country)
+        var Awards = screen.findViewById<TextView>(R.id.Awards)
+        var MetaScore = screen.findViewById<TextView>(R.id.MetaScore)
+        var imdbRating = screen.findViewById<TextView>(R.id.imdbRating)
+        var imdbVotes = screen.findViewById<TextView>(R.id.imdbVotes)
+        var imdbID = screen.findViewById<TextView>(R.id.imdbID)
+        var Poster = screen.findViewById<ImageView>(R.id.Poster)
+
+
+        var DeleteMovieData = screen.findViewById<Button>(R.id.DeleteMovieData)
+        var SaveMovieData = screen.findViewById<Button>(R.id.SaveMovieData)
+
+
 
         if(FetchOrSaved == "Saved"){
-            var transferredData = intent.extras.get("Info") as ArrayList<String>
 
-            Title.text =     getString(R.string.MovieTitle)     +transferredData[0]
-            MovieType.text = getString(R.string.MovieType)      +transferredData[11]
-            Rated.text =     getString(R.string.MovieRated)     +transferredData[8]
-            Released.text =  getString(R.string.MovieReleased)  +transferredData[1]
-            Runtime.text =   getString(R.string.MovieRuntime)   +transferredData[6]
-            Genre.text =     getString(R.string.MovieGenre)     +transferredData[7]
-            Director.text =  getString(R.string.Director)       +transferredData[13]
-            Writer.text =    getString(R.string.MovieWriter)    +transferredData[12]
-            Actors.text =    getString(R.string.MovieActors)    +transferredData[15]
-            Plot.text =      getString(R.string.MoviePlot)      +transferredData[14]
-            Language.text =  getString(R.string.MovieLanguage)  +transferredData[9]
-            Country.text =   getString(R.string.MovieCountry)   +transferredData[10]
-            Awards.text =    getString(R.string.MovieAwards)    +transferredData[16]
-            MetaScore.text = getString(R.string.MovieMetascore) +transferredData[2]
-            imdbRating.text =getString(R.string.imdbRating)     +transferredData[4]
-            imdbVotes.text = getString(R.string.imdbVotes)      +transferredData[5]
-            imdbID.text =    getString(R.string.imdbId)         +transferredData[3]
+        Title.text =     getString(R.string.MovieTitle)     +transferredData[0]
+        MovieType.text = getString(R.string.MovieType)      +transferredData[11]
+        Rated.text =     getString(R.string.MovieRated)     +transferredData[8]
+        Released.text =  getString(R.string.MovieReleased)  +transferredData[1]
+        Runtime.text =   getString(R.string.MovieRuntime)   +transferredData[6]
+        Genre.text =     getString(R.string.MovieGenre)     +transferredData[7]
+        Director.text =  getString(R.string.Director)       +transferredData[13]
+        Writer.text =    getString(R.string.MovieWriter)    +transferredData[12]
+        Actors.text =    getString(R.string.MovieActors)    +transferredData[15]
+        Plot.text =      getString(R.string.MoviePlot)      +transferredData[14]
+        Language.text =  getString(R.string.MovieLanguage)  +transferredData[9]
+        Country.text =   getString(R.string.MovieCountry)   +transferredData[10]
+        Awards.text =    getString(R.string.MovieAwards)    +transferredData[16]
+        MetaScore.text = getString(R.string.MovieMetascore) +transferredData[2]
+        imdbRating.text =getString(R.string.imdbRating)     +transferredData[4]
+        imdbVotes.text = getString(R.string.imdbVotes)      +transferredData[5]
+        imdbID.text =    getString(R.string.imdbId)         +transferredData[3]
 
 
             var fis: FileInputStream? = null
-            try {    fis = openFileInput(transferredData[0])   }
+            try {    fis = parentDocument.openFileInput(transferredData[0])   }
             catch (e: FileNotFoundException) {    e.printStackTrace()  }
             var ActivityMoviePoster = BitmapFactory.decodeStream(fis)
 
             Poster.setImageBitmap(ActivityMoviePoster)
 
-            DeleteMovieData.setOnClickListener {
-                val resultIntent = Intent()
-                resultIntent.putExtra("ID", intent.extras.getLong("ID"))
-                setResult(Activity.RESULT_OK, resultIntent)
-                finish()
-            }
-            SaveMovieData.setOnClickListener {
-                val Back = Intent()
-                setResult(Activity.RESULT_CANCELED, Back)
-                finish()
-            }
+
+
+        DeleteMovieData.setOnClickListener {
+            parentDocument.deleteMessage(ID.toLong())
+            parentDocument.fragmentManager.beginTransaction().remove(this).commit()
         }
+        SaveMovieData.setOnClickListener {
+            parentDocument.fragmentManager.beginTransaction().remove(this).commit()
+        }
+    }
 
 
-        if(FetchOrSaved == "Fetch"){
-        UserInput = intent.extras.get("information") as String
+    if(FetchOrSaved == "Fetch"){
 
         Loading.visibility = View.VISIBLE
 
         DeleteMovieData.text = "Back"
         SaveMovieData.text = "Save"
 
+        UserInput = parentDocument.MovieSearch.getText().toString()
 
         var theQuery  = ForecastQuery()
         theQuery.execute()
 
         DeleteMovieData.setOnClickListener {
-            val Back = Intent()
-            setResult(Activity.RESULT_CANCELED, Back)
-            finish()
+            parentDocument.fragmentManager.beginTransaction().remove(this).commit()
+
         }
         SaveMovieData.setOnClickListener {
             val exhaustiveMovieData = ArrayList<String>()
@@ -134,16 +161,42 @@ class MovieDetails : Activity() {
             exhaustiveMovieData.add(ActivityMovieAwards)
             exhaustiveMovieData.add(Year)
 
-            val resultIntent = Intent()
-            resultIntent.putExtra("Details", exhaustiveMovieData)
-            setResult(Activity.RESULT_OK, resultIntent)
-            finish()
+
+            parentDocument.addMessage(exhaustiveMovieData)
+            parentDocument.fragmentManager.beginTransaction().remove(this).commit()
 
         }
 
     }
-    }
+        return screen
+}
 
+
+    override fun onAttach(context: Activity?) {
+        super.onAttach(context)
+
+            parentDocument = context as MovieMain // need parent for later removing fragment
+        }
+
+    lateinit var ActivityMovieTitle : String
+    lateinit var ActivityMovieReleased : String
+    lateinit var ActivityMovieMetascore: String
+    lateinit var ActivityimdbId: String
+    lateinit var ActivityimdbRating: String
+    lateinit var ActivityimdbVotes: String
+    lateinit var ActivityMovieRuntime: String
+    lateinit var ActivityMovieGenre: String
+    lateinit var ActivityMovieRated: String
+    lateinit var ActivityMovieLanguage: String
+    lateinit var ActivityMovieCountry: String
+    lateinit var ActivityMovieType: String
+    lateinit var ActivityMovieWriter: String
+    lateinit var ActivityMoviePlot: String
+    lateinit var ActivityMovieActors: String
+    lateinit var ActivityMovieAwards: String
+    lateinit var ActivityDirector: String
+    lateinit var Year: String
+    lateinit var ActivityMoviePoster : Bitmap
 
 
 
@@ -199,8 +252,9 @@ class MovieDetails : Activity() {
         }
 
         fun fileExistance(fname : String):Boolean{
-            val file = getBaseContext().getFileStreamPath(fname)
+            val file = getActivity().getFileStreamPath(fname)
             return file.exists()   }
+
 
 
         override fun doInBackground(vararg params: String?): String {
@@ -241,8 +295,8 @@ class MovieDetails : Activity() {
 
                             if(fileExistance("$movieTitles")){
 
-                                var fis: FileInputStream ? = null
-                                try {    fis = openFileInput("$movieTitles")   }
+                                var fis: FileInputStream? = null
+                                try {    fis = parentDocument.openFileInput("$movieTitles")   }
                                 catch (e: FileNotFoundException) {    e.printStackTrace()  }
                                 ActivityMoviePoster = BitmapFactory.decodeStream(fis)
 
@@ -250,7 +304,7 @@ class MovieDetails : Activity() {
                             else {
                                 var MovieUrlly = moviePoster
                                 ActivityMoviePoster = getImage(MovieUrlly!!)!!
-                                val outputStream = openFileOutput("$movieTitles", Context.MODE_PRIVATE)
+                                val outputStream = parentDocument.openFileOutput("$movieTitles", Context.MODE_PRIVATE)
                                 ActivityMoviePoster?.compress((Bitmap.CompressFormat.PNG), 80, outputStream);
                                 outputStream.flush();
                                 outputStream.close();
@@ -292,7 +346,7 @@ class MovieDetails : Activity() {
             Awards.text =       getString(R.string.MovieAwards    ) + movieAwards
 
 
-             ActivityMovieTitle      = movieTitles.toString()
+            ActivityMovieTitle      = movieTitles.toString()
             ActivityMovieReleased   = movieReleased.toString()
             ActivityMovieMetascore  = movieMetaScore.toString()
             ActivityimdbId          = asyncImdbID.toString()
@@ -309,17 +363,18 @@ class MovieDetails : Activity() {
             ActivityMoviePlot       = moviePlot.toString()
             ActivityMovieActors     = movieActors.toString()
             ActivityMovieAwards     = movieAwards.toString()
-            Year     = movieYears.toString()
+            Year                    = movieYears.toString()
 
 
         }
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-
-            Poster.setImageBitmap(ActivityMoviePoster)
             Loading.visibility = View.INVISIBLE
+            Poster.setImageBitmap(ActivityMoviePoster)
         }
 
     }
-}
+
+
+    }
