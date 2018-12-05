@@ -50,6 +50,7 @@ class OCTranspoStopInfo : AppCompatActivity() {
     var speed: String = "Not Available"
     var startTime: String = "Not Available"
     var delay: String = "Not Available"
+    var average: Int = 0
 
     // ON CREATE //
 
@@ -240,9 +241,18 @@ class OCTranspoStopInfo : AppCompatActivity() {
 
             var selectedRoute = false
 
+            var lateStops = 0
+            var totalLateness = 0
+
             while (xpp.eventType != XmlPullParser.END_DOCUMENT){
 
                 if (xpp.eventType == XmlPullParser.START_TAG){
+                    if (xpp.name == "AjustedScheduleTime"){
+                        if (xpp.text != null){
+                            lateStops += 1
+                            totalLateness += xpp.text.toInt()
+                        }
+                    }
                     if (xpp.name == "Direction"){
                         xpp.next()
                         if(xpp.text == routeDirection){
@@ -273,7 +283,11 @@ class OCTranspoStopInfo : AppCompatActivity() {
                         }
                         if (xpp.name == "AdjustedScheduleTime"){
                             xpp.next()
-                            if (xpp.text != null){delay = xpp.text}
+                            if (xpp.text != null){
+                                delay = xpp.text
+                                lateStops += 1
+                                totalLateness += xpp.text.toInt()
+                            }
                         }
                         if (xpp.name == "GPSSPEED"){
                             xpp.next()
@@ -313,6 +327,15 @@ class OCTranspoStopInfo : AppCompatActivity() {
 
             }
 
+            /**
+             * Calculate average schedule adjustment time
+             */
+            if (lateStops != 0){
+                if (totalLateness != 0){
+                    average = totalLateness / lateStops
+                }
+            }
+
             return "Done"
         }
 
@@ -330,6 +353,7 @@ class OCTranspoStopInfo : AppCompatActivity() {
             routeData.putString("Speed", speed)
             routeData.putString("StartTime", startTime)
             routeData.putString("Delay", delay)
+            routeData.putString("Average", average.toString())
 
             showRouteDetails(routeData)
 

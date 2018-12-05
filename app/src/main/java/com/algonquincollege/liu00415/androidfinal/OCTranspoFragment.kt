@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import org.w3c.dom.Text
 
 class OCTranspoFragment : Fragment(){
 
@@ -37,6 +38,8 @@ class OCTranspoFragment : Fragment(){
         speed.text = routeData.getString("Speed")
         var delay = screen.findViewById<TextView>(R.id.delay)
         delay.text = routeData.getString("Delay")
+        var average = screen.findViewById<TextView>(R.id.average)
+        average.text = routeData.getString("Average")
 
         return screen
 
