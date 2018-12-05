@@ -47,5 +47,6 @@
         android:text="Stat Sheet"
         android:id="@+id/StatS"/>
 
+            android:layout_height="match_parent"/>
 
 </RelativeLayout>

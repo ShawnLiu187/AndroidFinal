@@ -39,6 +39,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/lrt_update"
         android:text="Is the LRT ready yet?"/>
+    <ProgressBar
+        android:id="@+id/progressBus"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        style="?android:attr/progressBarStyleHorizontal"/>
 
 
 </LinearLayout>

@@ -14,6 +14,7 @@ import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.util.Log
+import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,33 @@ class MovieMain : AppCompatActivity() {
     lateinit var  db: SQLiteDatabase
     lateinit var results: Cursor
     lateinit var dbHelper : ChatDatabaseHelper
+    //////////////////// Movie Information... I feel like a database will make this easier.
+    var movieTitles = ArrayList<String>()
+    var movieYears = ArrayList<String>()
+    var movieRated = ArrayList<String>()
+    var movieReleased = ArrayList<String>()
+    var movieRuntime = ArrayList<String>()
+    var movieGenre = ArrayList<String>()
+    var movieDirector = ArrayList<String>()
+    var movieWriter = ArrayList<String>()
+    var movieActors = ArrayList<String>()
+    var moviePlot = ArrayList<String>()
+    var movieLanguage = ArrayList<String>()
+    var movieCountry = ArrayList<String>()
+    var movieAwards = ArrayList<String>()
+    var movieMetaScore = ArrayList<String>()
+    var movieimdbRating = ArrayList<String>()
+    var imdbVotes = ArrayList<String>()
+    var imdbID = ArrayList<String>()
+    var movieType = ArrayList<String>()
+    var moviePoster = ArrayList<Int>()
+
+
+    ///////////////////// Location in the arrays of the selected item
+    //////////// Using it on startup to tell array size.
+    var MovieIndex = movieTitles.size
+
+    /////////////// Array Adapter variable name
     lateinit var myAdapter: ArrayAdapter<String>
     var  MoviePosition = 0
 
