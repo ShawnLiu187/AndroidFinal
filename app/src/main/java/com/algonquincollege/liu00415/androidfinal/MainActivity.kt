@@ -4,6 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+
+
+
 import com.example.tylercrozman.tylerfinalportion.MovieMain
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -29,22 +32,17 @@ class MainActivity : Activity() {
         }
 
 
-        moviePortal.setOnClickListener {
-            var destinationFilm = Intent(this, MovieMain::class.java)
-            startActivity(destinationFilm)
 
-        }
 
         var busPortal = findViewById<Button>(R.id.busPortal)
-        busPortal.setOnClickListener{
+        busPortal.setOnClickListener {
             var busActivity = Intent(this, OCTranspo::class.java)
             startActivity(busActivity)
         }
-
-          val moviePortal = findViewById<Button>(R.id.moviePortal)
-        moviePortal.setOnClickListener {
-            var destinationFilm = Intent(this, MovieMain::class.java)
-            startActivity(destinationFilm)
+        val moviePortal = findViewById<Button>(R.id.moviePortal)
+            moviePortal.setOnClickListener {
+                var destinationFilm = Intent(this, MovieMain::class.java)
+                startActivity(destinationFilm)
 
 
         }
