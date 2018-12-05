@@ -32,8 +32,6 @@ class MainActivity : Activity() {
         }
 
 
-
-
         var busPortal = findViewById<Button>(R.id.busPortal)
         busPortal.setOnClickListener {
             var busActivity = Intent(this, OCTranspo::class.java)
@@ -49,3 +47,4 @@ class MainActivity : Activity() {
 
     }
 }
+
