@@ -245,13 +245,13 @@ class OCTranspoStopInfo : AppCompatActivity() {
             var totalLateness = 0
 
             while (xpp.eventType != XmlPullParser.END_DOCUMENT){
-
                 if (xpp.eventType == XmlPullParser.START_TAG){
-                    if (xpp.name == "AjustedScheduleTime"){
-                        if (xpp.text != null){
+                    if (xpp.name == "AdjustedScheduleTime"){
+                        xpp.next()
+                        //if (xpp.name != null) {
                             lateStops += 1
                             totalLateness += xpp.text.toInt()
-                        }
+                        //}
                     }
                     if (xpp.name == "Direction"){
                         xpp.next()
@@ -283,11 +283,10 @@ class OCTranspoStopInfo : AppCompatActivity() {
                         }
                         if (xpp.name == "AdjustedScheduleTime"){
                             xpp.next()
-                            if (xpp.text != null){
-                                delay = xpp.text
-                                lateStops += 1
-                                totalLateness += xpp.text.toInt()
-                            }
+                            delay = xpp.text
+                            lateStops += 1
+                            totalLateness += xpp.text.toInt()
+
                         }
                         if (xpp.name == "GPSSPEED"){
                             xpp.next()
