@@ -159,7 +159,7 @@ class FetchFood : AppCompatActivity() {
             foodCalorie.text = "Calories:  " + responseCalorie.toString()
             foodFat.text = "Fat:  " + responseFat.toString()
             foodProtein.text = "Protein: " + responseProtein.toString()
-            foodProgress.visibility = View.INVISIBLE
+//            foodProgress.visibility = View.INVISIBLE
         }
     }
 }
