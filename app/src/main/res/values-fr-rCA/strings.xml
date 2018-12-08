@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add_to_faveFood">Ajouter aux favoris</string>
+    <string name="cancel_faveFood">Annuler</string>
+    <string name="delete">Effacer</string>
+    <string name="help">Aidez-moi</string>
+
+    <string name="articleCount">Nombre d\'articles</string>
+    <string name="maxWord">Nombre de mots maximum</string>
+    <string name="averageWord">Nombre de mots moyen</string>
+    <string name="minWord">Nombre de mots min</string>
+    <string name="backToNews">Retour aux nouvelles</string>
+</resources>
