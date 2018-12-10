@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item android:id="@+id/action_one"
-        android:title="cat"
-        android:icon="@drawable/cat"
-        android:orderInCategory="100"
+    <item android:id="@+id/action1"
+        android:title="News Portal"
+        android:icon="@drawable/ball"
+        android:orderInCategory="101"
         app:showAsAction="always" />
-    <item android:id="@+id/action_two"
-        android:title="dog"
-        android:icon="@drawable/dog"
-        android:orderInCategory="200"
+
+    <item android:id="@+id/action2"
+        android:title="OCTranspo"
+        android:icon="@drawable/car"
+        android:orderInCategory="105"
         app:showAsAction="always" />
-    <item android:id="@+id/action_three"
-        android:title="falcon"
-        android:icon="@drawable/falcon"
-        android:orderInCategory="300"
+
+    <item android:id="@+id/action3"
+        android:title="Movie Portal"
+        android:icon="@drawable/city"
+        android:orderInCategory="110"
         app:showAsAction="always" />
-    <item android:id="@+id/action_four"
-        android:title="dinosaur"
-        android:icon="@drawable/dinosaur"
-        android:orderInCategory="400"
+    <item android:id="@+id/action4"
+        android:title="Help"
+        android:icon="@drawable/gas"
+        android:orderInCategory="120"
         app:showAsAction="never" />
 </menu>
