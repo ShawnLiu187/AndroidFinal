@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.algonquincollege.liu00415.androidfinal">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,18 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+           <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity android:name=".foodList" />
+
         <activity android:name=".newsList" />
         <activity android:name=".OCTranspo"></activity>
         <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieMain" />
         <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieDetails" />
-        <activity android:name="com.example.tylercrozman.tylerfinalportion.SavedMovieDetails" />
         <activity android:name=".FetchFood"></activity>
     </application>
 
