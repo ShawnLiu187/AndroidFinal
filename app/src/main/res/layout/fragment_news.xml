@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:id="@+id/faveNewsTitle"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:text="Title"
+        android:textSize="20dp"/>
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/faveNewsAuthor"
+        android:text="Author"
+        android:gravity="right"
+        android:paddingRight="10dp"
+        android:layout_below="@id/faveNewsTitle"/>
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/faveNewsDate"
+        android:text="Date"
+        android:gravity="right"
+        android:paddingRight="10dp"
+        android:layout_below="@id/faveNewsAuthor"/>
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/faveNewsLink"
+        android:autoLink="web"
+        android:text="Some link"
+        android:paddingBottom="20dp"
+        android:gravity="center"
+        android:layout_below="@id/faveNewsDate"/>
+
+    <WebView android:layout_width="240dp"
+        android:layout_height="145dp"
+        android:id="@+id/faveNewsImage"
+        android:layout_below="@id/faveNewsLink"
+        android:layout_centerInParent="true"/>
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/faveNewsImage"
+        android:paddingTop="20dp"
+        android:gravity="center"
+        android:id="@+id/faveNewsContent"/>
+    <TextView
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/faveNewsId"
+        android:layout_below="@+id/faveNewsContent"
+        android:gravity="center"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cancelFaveNewsBtn"
+        android:text="@string/delete"
+        android:id="@+id/delFaveNewsBtn"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/cancel_faveFood"
+        android:id="@+id/cancelFaveNewsBtn"/>
+
+</RelativeLayout>

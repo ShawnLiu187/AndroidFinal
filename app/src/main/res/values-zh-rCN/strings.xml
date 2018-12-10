@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">安卓期末作业</string>
+    <string name="add_to_faveFood">加入喜欢</string>
+    <string name="cancel_faveFood">取消</string>
+    <string name="delete">删除</string>
+    <string name="search_food">搜索</string>
+    <string name="foodName">名称</string>
+    <string name="calorie">卡路里</string>
+    <string name="protein">蛋白质</string>
+    <string name="fat">脂肪</string>
+
+    <string name="help">帮助</string>
+    <string name="maxCalorie">最大卡路里</string>
+    <string name="averageCalorie">平均卡路里</string>
+    <string name="minCalorie">最小卡路里</string>
+
+    <string name="howToNavigate">如何浏览</string>
+    <string name="useToolBar">点击如上标志浏览</string>
+    <string name="likeTheApp">喜欢这个应用？告诉我们</string>
+    <string name="typeHere">由此输入</string>
+    <string name="ok">确定</string>
+
+    <string name="food">食物营养</string>
+</resources>

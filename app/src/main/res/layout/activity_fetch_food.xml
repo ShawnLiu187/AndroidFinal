@@ -46,14 +46,14 @@
         android:id="@+id/saveFood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add to Favorite"
+        android:text="@string/add_to_faveFood"
         android:layout_above="@+id/cancelFood"
         android:gravity="center"/>
     <Button
         android:id="@+id/cancelFood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cancel"
+        android:text="@string/cancel_faveFood"
         android:layout_alignParentBottom="true"/>
     <ProgressBar
         android:id="@+id/foodProgress"

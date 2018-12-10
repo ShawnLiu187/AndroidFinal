@@ -16,7 +16,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"
+        android:text="@string/search_food"
         android:layout_below="@id/foodList_toolbar"
         android:layout_alignParentRight="true"
         android:id="@+id/sendButton"/>
