@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">AndroidFinal</string>
+
+
+    <!--********** Movie Main **************-->
+
+
+    <string name="ListLabel">
+Films énumérés:</string>
+    <!-- ******** Details Page ************ -->
+    <string name="MovieTitle">Titre: \n   </string>
+    <string name="MovieReleased">Libéré:\n  </string>
+    <string name="MovieMetascore">Metascore: \n   </string>
+    <string name="imdbId">IMDB Id:\n  </string>
+    <string name="imdbRating"> Évaluation: \n </string>
+    <string name="imdbVotes"> Votes: \n   </string>
+    <string name="MovieRuntime">Temps d\'exécution: \n   </string>
+    <string name="Director">Réalisateur: \n  </string>
+    <string name="MovieGenre">Genre: \n   </string>
+    <string name="MovieRated">Classé:  \n  </string>
+    <string name="MovieLanguage">
+La langue: \n </string>
+    <string name="MovieCountry">
+Pays: \n   </string>
+    <string name="MovieType">Type: \n </string>
+    <string name="MovieWriter">Écrivain: \n </string>
+    <string name="MoviePlot">Terrain: \n </string>
+    <string name="MovieActors">Acteurs: \n </string>
+    <string name="MovieAwards">Prix: \n </string>
+
+
+    <!--********** Movie Stats **************-->
+    <string name="MovieDino">
+Movie Dino apporte des statistiques! </string>
+    <string name="LongestMovie">
+Le plus long film </string>
+    <string name="ShortestMovie">
+Plus court film</string>
+    <string name="MovieAvg"> Longueur moyenne</string>
+    <string name="Oldest"> Plus vieux film </string>
+    <string name="Newest">Nouveau film </string>
+    <string name="MovieAvgR">Libération moyenne</string>
+
