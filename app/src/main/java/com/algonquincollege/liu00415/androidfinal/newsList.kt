@@ -120,6 +120,7 @@ class newsList : AppCompatActivity() {
                         } else if (this.story != null) {
                             when {
                                 xpp.name == "title" -> this.story?.title = xpp.nextText()
+
                                 xpp.name == "link" -> this.story?.link = xpp.nextText()
                                 xpp.name == "pubDate" -> this.story?.date = xpp.nextText()
                                 xpp.name == "author" -> this.story?.author == xpp.nextText()
@@ -141,6 +142,7 @@ class newsList : AppCompatActivity() {
                         }
                         progress += 20
                     }
+
                 }
                 eventType = xpp.next()
             }

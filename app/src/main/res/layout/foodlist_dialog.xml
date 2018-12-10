@@ -12,19 +12,19 @@ android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Use toolbar icons to navigate"
+        android:text="@string/useToolBar"
         android:gravity="center"/>
 
 
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Like the app? Submit comment below:"
+    android:text="@string/likeTheApp"
     android:gravity="center"/>
 <EditText
     android:id="@+id/commenField"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="Type here"/>
+    android:hint="@string/typeHere"/>
 
 </LinearLayout>
