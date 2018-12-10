@@ -6,25 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".foodList">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/foodList_toolbar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"></android.support.v7.widget.Toolbar>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"
-        android:layout_alignParentTop="true"
+        android:text="@string/search_food"
+        android:layout_below="@id/foodList_toolbar"
         android:layout_alignParentRight="true"
         android:id="@+id/sendButton"/>
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/foodList_toolbar"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/sendButton"
-        android:id="@+id/editText"/>
+        android:id="@+id/foodEdit"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/sendButton"
-        android:id="@+id/listView"></ListView>
+        android:id="@+id/foodListView"></ListView>
     <ProgressBar
         android:id="@+id/progress"
         android:layout_alignParentBottom="true"

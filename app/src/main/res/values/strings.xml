@@ -1,3 +1,66 @@
 <resources>
     <string name="app_name">AndroidFinal</string>
+
+    <string name="add_to_faveFood">Add to Favourite</string>
+    <string name="cancel_faveFood">Cancel</string>
+    <string name="delete">Delete</string>
+    
+    <string name="search_food">Search</string>
+    <string name="foodName">Food Name</string>
+    <string name="calorie">Calories</string>
+    <string name="protein">Proteins</string>
+    <string name="fat">Fat</string>
+
+    <string name="help">Help</string>
+    <string name="maxCalorie">Max Calorie</string>
+    <string name="averageCalorie">Average Calorie</string>
+    <string name="minCalorie">Min Calorie</string>
+
+    <string name="howToNavigate">How to Navigate</string>
+    <string name="useToolBar">Use toolbar icons to navigate</string>
+    <string name="likeTheApp">Like the app? Submit comment below</string>
+    <string name="typeHere">Type here</string>
+    <string name="ok">OK</string>
+
+    <string name="food">Food Nutrition</string>
+
+    <string name="articleCount">Article Count</string>
+    <string name="maxWord">Max Word Count</string>
+    <string name="averageWord">Average Word Count</string>
+    <string name="minWord">Min Word Count</string>
+    <string name="backToNews">Back to news</string>
+
+
+    <!--********** Movie Main **************-->
+
+
+    <string name="ListLabel">Movies Listed:</string>
+    <!-- ******** Details Page ************ -->
+    <string name="MovieTitle">Title: \n   </string>
+    <string name="MovieReleased">Released:\n  </string>
+    <string name="MovieMetascore">Metascore: \n   </string>
+    <string name="imdbId">IMDB Id:\n  </string>
+    <string name="imdbRating"> Rating: \n </string>
+    <string name="imdbVotes"> Votes: \n   </string>
+    <string name="MovieRuntime">Runtime: \n   </string>
+    <string name="Director">Director: \n  </string>
+    <string name="MovieGenre">Genre: \n   </string>
+    <string name="MovieRated">Rated:  \n  </string>
+    <string name="MovieLanguage">Language: \n </string>
+    <string name="MovieCountry">Country: \n   </string>
+    <string name="MovieType">Type: \n </string>
+    <string name="MovieWriter">Writer: \n </string>
+    <string name="MoviePlot">Plot: \n </string>
+    <string name="MovieActors">Actors: \n </string>
+    <string name="MovieAwards">Awards: \n </string>
+
+
+    <!--********** Movie Stats **************-->
+    <string name="MovieDino">Movie Dino Brings Statistics! </string>
+    <string name="LongestMovie"> Longest Movie </string>
+    <string name="ShortestMovie">Shortest Movie</string>
+    <string name="MovieAvg"> Average Length</string>
+    <string name="Oldest"> Oldest Movie </string>
+    <string name="Newest">Newest Movie </string>
+    <string name="MovieAvgR">Average Release</string>
 </resources>

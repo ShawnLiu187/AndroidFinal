@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FetchFood">
+
+<ImageView
+    android:id="@+id/placeHolder"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_gravity="center" />
+    <TextView
+        android:id="@+id/foodName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/placeHolder"
+        android:text="Name"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/calorie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/foodName"
+        android:gravity="center"
+        android:text="Calorie"/>
+
+    <TextView
+        android:id="@+id/protein"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/calorie"
+        android:gravity="center"
+        android:text="Protein"/>
+
+    <TextView
+        android:id="@+id/fat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@+id/protein"
+        android:text="Fat"/>
+
+    <Button
+        android:id="@+id/saveFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_to_faveFood"
+        android:layout_above="@+id/cancelFood"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/cancelFood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_faveFood"
+        android:layout_alignParentBottom="true"/>
+    <ProgressBar
+        android:id="@+id/foodProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        style="?android:attr/progressBarStyleHorizontal"/>
+
+</RelativeLayout>
