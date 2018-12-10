@@ -12,14 +12,12 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.text.Editable
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
-import com.algonquincollege.liu00415.androidfinal.MovieFragment
-import com.algonquincollege.liu00415.androidfinal.R
+import com.algonquincollege.liu00415.androidfinal.*
 import kotlinx.android.synthetic.main.movie_details.*
 import kotlinx.android.synthetic.main.movie_main.*
 import java.io.FileInputStream
@@ -46,6 +44,11 @@ class MovieMain : AppCompatActivity() {
         ///////////// Database read link followed by get a writable database
         dbHelper = ChatDatabaseHelper(); //Inner Class
         db = dbHelper.writableDatabase
+
+
+        //////////////// Toolbar
+        var toolbar = findViewById<Toolbar>(R.id.MovieToolbar)
+        setSupportActionBar(toolbar)
 
 
         /////////////// SQL Query
@@ -138,7 +141,7 @@ class MovieMain : AppCompatActivity() {
 ////////
         myList.setAdapter(myAdapter)
         var srch = findViewById<ImageButton>(R.id.Search)
-        srch.setOnClickListener{
+        Search.setOnClickListener{
 
             var userTyped = searchBarText.getText().toString()
 
@@ -268,7 +271,28 @@ class MovieMain : AppCompatActivity() {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.movie_menu, menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.OC -> {
+                var intent = Intent(this, OCTranspo::class.java)
+                startActivity(intent)
+            }
+            R.id.Food -> {
+                var intent = Intent(this, foodList::class.java)
+                startActivity(intent)
 
+            }
+            R.id.News -> {
+                var intent = Intent(this, newsList::class.java)
+                startActivity(intent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
     //////////////////////// Database Class
     inner class MyAdapter(ctx : Context) : ArrayAdapter<String>(ctx, 0 ) {
 
