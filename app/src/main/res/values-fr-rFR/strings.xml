@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Le AndroidFinal</string>
+    <string name="ocDestination">Le Destination:</string>
+    <string name="ocLocation">Le Location:</string>
+    <string name="ocStartTime">Le Start Time:</string>
+    <string name="ocBusSpeed">Le Bus Speed:</string>
+    <string name="ocMinutesLate">Le Minutes Late:</string>
+    <string name="ocAverageLateness">Le Average Lateness:</string>
+    <string name="ocSaveStop">Le Save Stop</string>
+    <string name="ocDeleteStop">Le Delete Stop</string>
+    <string name="ocStopNumber">Le Stop Number</string>
+    <string name="ocViewStop">Le View Stop</string>
+    <string name="oc_help_message">Le Enter a stop number to view its bus routes</string>
+</resources>

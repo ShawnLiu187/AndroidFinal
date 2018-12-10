@@ -16,13 +16,14 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Enter Stop Number"
+            android:hint="Stop Number"
             android:inputType="number"
-            android:maxLength="4"/>
+            android:maxLength="4"
+            android:id="@+id/stopNumber"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Stop"
+            android:text="View Stop"
             android:id="@+id/addStop"/>
 
     </LinearLayout>
@@ -34,11 +35,6 @@
 
     </ListView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lrt_update"
-        android:text="Is the LRT ready yet?"/>
     <ProgressBar
         android:id="@+id/progressBus"
         android:layout_alignParentBottom="true"
