@@ -29,14 +29,14 @@
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Save Stop"
+            android:text="@string/ocSaveStop"
             android:id="@+id/saveStop"
             android:visibility="invisible"/>
 
         <Button
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="Delete Stop"
+            android:text="@string/ocDeleteStop"
             android:id="@+id/deleteStop"
             android:visibility="invisible"/>
 

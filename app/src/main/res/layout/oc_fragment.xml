@@ -13,7 +13,7 @@
     <TextView
         android:layout_height="30dp"
         android:layout_width="wrap_content"
-        android:text="Destination:"
+        android:text="@string/ocDestination"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="Location:"
+        android:text="@string/ocLocation"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="Start Time:"
+        android:text="@string/ocStartTime"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="Bus Speed:"
+        android:text="@string/ocBusSpeed"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
@@ -77,12 +77,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="Minutes Late:"
+        android:text="@string/ocMinutesLate"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:id="@+id/delay"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="@string/ocAverageLateness"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:id="@+id/average"/>
     </LinearLayout>
 
 </LinearLayout>

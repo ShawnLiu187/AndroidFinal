@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">AndroidFinal</string>
+    <string name="ocDestination">Destination:</string>
+    <string name="ocLocation">Location:</string>
+    <string name="ocStartTime">Start Time:</string>
+    <string name="ocBusSpeed">Bus Speed:</string>
+    <string name="ocMinutesLate">Minutes Late:</string>
+    <string name="ocAverageLateness">Average Lateness:</string>
+    <string name="ocSaveStop">Save Stop</string>
+    <string name="ocDeleteStop">Delete Stop</string>
+    <string name="ocStopNumber">Stop Number</string>
+    <string name="ocViewStop">View Stop</string>
+    <string name="oc_help_message">Enter a stop number to view its bus routes</string>
 </resources>

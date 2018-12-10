@@ -9,9 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
@@ -20,6 +17,9 @@ import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
 import java.net.HttpURLConnection
 import java.net.URL
+import android.support.v7.widget.Toolbar
+import android.view.*
+import com.example.tylercrozman.tylerfinalportion.MovieMain
 
 
 class OCTranspo : AppCompatActivity() {
@@ -33,6 +33,11 @@ class OCTranspo : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_octranspo)
+
+
+        var toolbar = findViewById<Toolbar>(R.id.oc_toolbar)
+        setSupportActionBar(toolbar)
+
 
         /**
          *  Display stored stops in the list view
@@ -124,6 +129,41 @@ class OCTranspo : AppCompatActivity() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.oc_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId)
+        {
+            R.id.action_one -> {
+                val movie = Intent(this, MovieMain::class.java)
+                startActivity(movie)
+            }
+            R.id.action_two -> {
+                val news = Intent(this, foodList::class.java)
+                startActivity(news)
+            }
+            R.id.action_three -> {
+                val food = Intent(this, newsList::class.java)
+                startActivity(food)
+            }
+            R.id.action_four -> {
+
+                    var lrtMessage=layoutInflater.inflate(R.layout.lrt_message,null)
+
+                    var builder=AlertDialog.Builder(this)
+                    builder.setView(lrtMessage)
+                    builder.setPositiveButton("okay",{dialog,id->
+                    })
+                    var dialog=builder.create()
+                    dialog.show()
+
+            }
+        }
+        return true
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
