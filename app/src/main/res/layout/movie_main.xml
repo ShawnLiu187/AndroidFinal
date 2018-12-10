@@ -7,6 +7,14 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/MovieToolbar"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+    </android.support.v7.widget.Toolbar>
 
 
         <EditText
@@ -14,13 +22,15 @@
                   android:layout_height="wrap_content"
                 android:hint="Find Movie by Name:"
                 android:id="@+id/MovieSearch"
+            android:layout_below="@id/MovieToolbar"
         />
         <ImageButton
                 android:src="@android:drawable/ic_search_category_default"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/Search"/>
+                android:id="@+id/Search"
+            android:layout_below="@id/MovieToolbar"/>
 
 
     <TextView
