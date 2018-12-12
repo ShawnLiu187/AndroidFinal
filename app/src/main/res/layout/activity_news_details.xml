@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewsDetails">
+    <TextView android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:id="@+id/articleTitle"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:text="Title"
+        android:textSize="20dp"/>
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/authorName"
+        android:text="Author"
+        android:gravity="right"
+        android:paddingRight="10dp"
+        android:layout_below="@id/articleTitle"/>
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/articleDate"
+        android:text="Date"
+        android:gravity="right"
+        android:paddingRight="10dp"
+        android:layout_below="@id/authorName"/>
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/articleLink"
+        android:autoLink="web"
+        android:text="Some link"
+        android:paddingBottom="20dp"
+        android:gravity="center"
+        android:layout_below="@id/articleDate"/>
+
+    <WebView android:layout_width="240dp"
+        android:layout_height="145dp"
+        android:id="@+id/articleImage"
+        android:layout_below="@id/articleLink"
+        android:layout_centerInParent="true"/>
+
+    <TextView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/articleImage"
+        android:paddingTop="20dp"
+        android:gravity="center"
+        android:id="@+id/articleContent"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/cancelNewsBtn"
+        android:text="@string/add_to_faveFood"
+        android:id="@+id/saveNewsBtn"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="@string/cancel_faveFood"
+        android:id="@+id/cancelNewsBtn"/>
+
+</RelativeLayout>

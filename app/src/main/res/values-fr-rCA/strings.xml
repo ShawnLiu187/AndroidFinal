@@ -41,4 +41,27 @@ Plus court film</string>
     <string name="Newest">Nouveau film </string>
     <string name="MovieAvgR">Libération moyenne</string>
 
+
+
+
+    <!--************** Added for Debug ****************-->
+    <string name="hello_blank_fragment">hello_blank_fragment</string>
+    <string name="cancel_faveFood">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="foodName">foodName</string>
+    <string name="calorie">calorie</string>
+    <string name="protein">protein</string>
+    <string name="fat">fat</string>
+    <string name="add_to_faveFood">Save</string>
+
+    <string name="help">help</string>
+    <string name="articleCount">articleCount</string>
+    <string name="maxWord">maxWord</string>
+    <string name="averageWord">averageWord</string>
+    <string name="minWord">minWord</string>
+    <string name="backToNews">backToNews</string>
+    <string name="maxCalorie">maxCalorie</string>
+    <string name="averageCalorie">averageCalorie</string>
+    <string name="minCalorie">minCalorie</string>
+
 </resources>

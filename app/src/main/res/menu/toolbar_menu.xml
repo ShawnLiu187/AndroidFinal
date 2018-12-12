@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action1"
+        android:title="News Portal"
+        android:icon="@drawable/ball"
+        android:orderInCategory="101"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action2"
+        android:title="OCTranspo"
+        android:icon="@drawable/car"
+        android:orderInCategory="105"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/action3"
+        android:title="Movie Portal"
+        android:icon="@drawable/city"
+        android:orderInCategory="110"
+        app:showAsAction="always" />
+    <item android:id="@+id/action4"
+        android:title="@string/help"
+        android:icon="@drawable/gas"
+        android:orderInCategory="120"
+        app:showAsAction="never" />
+    <item android:id="@+id/action5"
+        android:title="@string/maxCalorie"
+        android:icon="@drawable/gas"
+        android:orderInCategory="120"
+        app:showAsAction="never" />
+    <item android:id="@+id/action6"
+        android:title="@string/averageCalorie"
+        android:icon="@drawable/gas"
+        android:orderInCategory="120"
+        app:showAsAction="never" />
+    <item android:id="@+id/action7"
+        android:title="@string/minCalorie"
+        android:icon="@drawable/gas"
+        android:orderInCategory="120"
+        app:showAsAction="never" />
+</menu>
