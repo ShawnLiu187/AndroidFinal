@@ -19,28 +19,36 @@ import com.example.tylercrozman.tylerfinalportion.MovieMain
 import android.content.Context
 import kotlin.math.roundToInt
 
+/**
+ * foodList stores saved food items, and allows search input for fetch.
+ *
+ * @author  Shawn Boxiao Liu
+ * @version 1.0
+ * @since   2018-12-12
+ */
 
 class foodList : AppCompatActivity() {
-
+/**Search Input and Search Button*/
     lateinit var searchButton: Button
     lateinit var foodEdit: EditText
 
     var snackMessage = "Searching for something"
 
+    /**Arrays to hold all food related date*/
     var foodNames = ArrayList<String>()
     var foodCalories = ArrayList<Double>()
     var foodFats = ArrayList<Double>()
     var foodProteins = ArrayList<Double>()
     var foodAdapter : FoodAdapter? = null
 
-    //database stuff
+    /**Databse variables*/
     lateinit var dbHelper: FoodDatabaseHelper
     lateinit var db: SQLiteDatabase
     lateinit var results: Cursor
 
     //fragment stuff
     var foodPosition = 0
-
+    /**Inflates ListView*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_list)
@@ -129,6 +137,7 @@ class foodList : AppCompatActivity() {
         foodListView?.setAdapter(foodAdapter)
     }
 
+    /**After fetching return to food list*/
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 23) {
@@ -186,6 +195,7 @@ class foodList : AppCompatActivity() {
     val FOODPROTEINS = "proteins"
     val FOODFATS = "fats"
 
+    /**Inner class for database adapter*/
     inner class FoodDatabaseHelper : SQLiteOpenHelper(this@foodList, DATABASE_NAME, null, VERSION_NUM){
         override fun onCreate(db: SQLiteDatabase) {
             Log.i("FoodDatabaseHelper", "Calling onCreate");
@@ -204,6 +214,7 @@ class foodList : AppCompatActivity() {
         }
     }
 
+    /**Inner class for array adapter*/
     inner class FoodAdapter(ctx: Context) : ArrayAdapter<String>(ctx, 0 ) {
         override fun getCount(): Int {
             return foodNames.size
@@ -235,6 +246,8 @@ class foodList : AppCompatActivity() {
         }
     }
 
+    /**Deleting items from all food arrays
+     * @param id - this is the id passed back from foodFragment*/
     fun deleteMessage(id:Long)
     {
         db.delete(TABLE_NAME, "_id=$id", null)
@@ -245,7 +258,7 @@ class foodList : AppCompatActivity() {
         foodFats.removeAt(foodPosition)
         foodAdapter?.notifyDataSetChanged()//reload
     }
-
+/**Calculate the average calories of all food items saved*/
     fun averageCalorie()
     {
         var totalCalorie = 0.00
@@ -265,7 +278,7 @@ class foodList : AppCompatActivity() {
                 })
                 .show()
     }
-
+    /**Calculate the max calories of all food items saved*/
     fun maxCalorie()
     {
         var maxCalorie = 0.00
@@ -287,7 +300,7 @@ class foodList : AppCompatActivity() {
                 })
                 .show()
     }
-
+    /**Calculate the minimum calories of all food items saved*/
     fun minCalorie()
     {
         var minCalorie = 0.0
@@ -314,12 +327,12 @@ class foodList : AppCompatActivity() {
 
 
 
-
+/**Inflate toolbar menu*/
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true
     }
-
+    /**Set actions on toolbar items*/
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId)
         {

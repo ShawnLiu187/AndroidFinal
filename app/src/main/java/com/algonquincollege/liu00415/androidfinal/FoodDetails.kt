@@ -2,9 +2,15 @@ package com.algonquincollege.liu00415.androidfinal
 
 import android.app.Activity
 import android.os.Bundle
-
+/**
+ * FoodDetails pass data to the food fragment, and inflates the fragment
+ *
+ * @author  Shawn Boxiao Liu
+ * @version 1.0
+ * @since   2018-12-12
+ */
 class FoodDetails : Activity() {
-
+    /** pass data to the food fragment, and inflates the fragment*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_food_details)

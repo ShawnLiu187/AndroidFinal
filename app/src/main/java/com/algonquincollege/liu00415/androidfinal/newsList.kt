@@ -20,6 +20,14 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.regex.Pattern
 
+/**
+ * newsList
+ *
+ * @author  Jordan Morrison
+ * @version 1.0
+ * @since   2018-12-10
+ */
+
 class newsList : AppCompatActivity() {
 
     lateinit var newsProgressBar: ProgressBar

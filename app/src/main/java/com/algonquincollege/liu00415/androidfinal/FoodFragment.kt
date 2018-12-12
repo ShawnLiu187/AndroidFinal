@@ -18,14 +18,18 @@ import android.widget.TextView
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+
 /**
+ * FoodFragment displays nutrition information and allows for deletion.
  * A simple [Fragment] subclass.
- *
+ * @author  Shawn Boxiao Liu
+ * @version 1.0
+ * @since   2018-12-12
  */
 class FoodFragment : Fragment() {
 
     lateinit var parentDocument: foodList
-
+    /**Extract dataPassed from arguments and update user interface*/
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment

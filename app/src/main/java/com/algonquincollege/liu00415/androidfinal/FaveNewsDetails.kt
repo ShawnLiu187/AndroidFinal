@@ -3,6 +3,14 @@ package com.algonquincollege.liu00415.androidfinal
 import android.app.Activity
 import android.os.Bundle
 
+/**
+ * FavoriteNewsDetails
+ *
+ * @author  Jordan Morrison
+ * @version 1.0
+ * @since   2018-12-10
+ */
+
 class FaveNewsDetails : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
