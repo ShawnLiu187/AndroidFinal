@@ -18,6 +18,14 @@ import android.widget.*
 import com.example.tylercrozman.tylerfinalportion.MovieMain
 import kotlin.math.roundToInt
 
+/**
+ * FavoriteNews
+ *
+ * @author  Jordan Morrison
+ * @version 1.0
+ * @since   2018-12-10
+ */
+
 class FavoriteNews : AppCompatActivity() {
     var faveNewsArray = ArrayList<FavouriteStory?>()
     lateinit var faveNewsAdapter: FaveNewsAdapter

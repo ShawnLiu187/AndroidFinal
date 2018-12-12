@@ -13,6 +13,14 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
+/**
+ * newDetails
+ *
+ * @author  Jordan Morrison
+ * @version 1.0
+ * @since   2018-12-10
+ */
+
 class NewsDetails : AppCompatActivity() {
 
     var receivedStory = newsList.Story(null, null, null, null, null, null)

@@ -24,6 +24,13 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
+/**
+ * NewsFragment
+ *
+ * @author  Jordan Morrison
+ * @version 1.0
+ * @since   2018-12-10
+ */
 class NewsFragment : Fragment() {
 
     lateinit var parentDocument: FavoriteNews

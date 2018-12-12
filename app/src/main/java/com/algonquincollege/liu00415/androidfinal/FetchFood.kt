@@ -17,6 +17,14 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
+/**
+ * FetchFood fetches nutrition information.
+ *
+ * @author  Shawn Boxiao Liu
+ * @version 1.0
+ * @since   2018-12-12
+ */
+
 class FetchFood : AppCompatActivity() {
 
     lateinit var cancelFood: Button
@@ -34,7 +42,7 @@ class FetchFood : AppCompatActivity() {
     var responseFat : Double? = null
     var responseProtein : Double? = null
 
-
+    /**onCreate function calls fetch to execute. */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fetch_food)
@@ -83,7 +91,7 @@ class FetchFood : AppCompatActivity() {
         var foodQuery = FoodQuery()
         foodQuery.execute()
     }
-
+/**inner class for fetch*/
     inner class FoodQuery: AsyncTask<String, Integer, String>(){
         var searchProgress=0
 
@@ -147,13 +155,13 @@ class FetchFood : AppCompatActivity() {
             }
             return "Response"
         }
-
+    /**Updates progress bar*/
         override fun onProgressUpdate(vararg values: Integer?) {
 //            super.onProgressUpdate(*values)
 
             foodProgress.setProgress(searchProgress)
         }
-
+    /**Update user interface*/
         override fun onPostExecute(result: String?) {
             foodName.setText(foodKeyword)
             foodCalorie.text = "Calories:  " + responseCalorie.toString()
