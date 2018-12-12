@@ -140,7 +140,6 @@ class MovieMain : AppCompatActivity() {
 
 ////////
         myList.setAdapter(myAdapter)
-        var srch = findViewById<ImageButton>(R.id.Search)
         Search.setOnClickListener{
 
             var userTyped = searchBarText.getText().toString()
