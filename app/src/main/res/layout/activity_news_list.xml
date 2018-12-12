@@ -6,17 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".newsList">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/newsList_toolbar"
+        android:text="Search"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"></android.support.v7.widget.Toolbar>
+        android:layout_alignParentRight="true"
+        android:id="@+id/sendButton"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/sendButton"
+        android:id="@+id/editText"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/newsList_toolbar"
-        android:id="@+id/newsListView"></ListView>
+        android:layout_below="@id/sendButton"
+        android:id="@+id/listView"></ListView>
     <ProgressBar
         android:id="@+id/progressNews"
         android:layout_alignParentBottom="true"

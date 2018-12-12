@@ -18,19 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".OCTranspo" />
-        <activity android:name=".FavoriteNews" />
-        <activity android:name=".FaveNewsDetails" />
-        <activity android:name=".FetchFood" />
-        <activity android:name=".FoodDetails" />
-        <activity android:name=".foodList" />
-        <activity android:name=".NewsDetails" />
-        <activity android:name=".newsList" />
 
 
         <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieMain" />
         <activity android:name="com.example.tylercrozman.tylerfinalportion.MovieDetails" />
-        <activity android:name=".newsList"></activity>
     </application>
 
 </manifest>
