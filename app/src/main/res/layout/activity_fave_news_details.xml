@@ -7,4 +7,5 @@
     android:id="@+id/newsFragmentLocation"
     tools:context=".FaveNewsDetails">
 
+
 </FrameLayout>

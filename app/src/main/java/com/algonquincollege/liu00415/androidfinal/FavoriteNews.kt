@@ -22,7 +22,7 @@ import kotlin.math.roundToInt
  * FavoriteNews
  *
  * @author  Jordan Morrison
- * @version 1.0
+ * @version 1.1
  * @since   2018-12-10
  */
 

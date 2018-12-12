@@ -65,4 +65,5 @@
         android:text="@string/cancel_faveFood"
         android:id="@+id/cancelNewsBtn"/>
 
+
 </RelativeLayout>

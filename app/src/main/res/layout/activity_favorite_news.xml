@@ -18,4 +18,5 @@
         android:layout_below="@+id/FaveNewsList_toolbar"
         android:id="@+id/FaveNewsListView"></ListView>
 
+
 </RelativeLayout>

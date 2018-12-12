@@ -28,7 +28,7 @@ private const val ARG_PARAM2 = "param2"
  * NewsFragment
  *
  * @author  Jordan Morrison
- * @version 1.0
+ * @version 1.1
  * @since   2018-12-10
  */
 class NewsFragment : Fragment() {
